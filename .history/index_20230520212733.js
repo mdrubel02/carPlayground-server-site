@@ -39,7 +39,7 @@ async function run() {
       else{
        result = await productsCollection.find({}).skip(pageSize*productSize).limit(productSize).toArray()
       }
-      
+      console.log(result)
       const count = await productsCollection.count()
       res.send({
           count:count,

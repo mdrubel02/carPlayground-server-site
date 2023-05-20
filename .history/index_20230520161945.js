@@ -27,33 +27,7 @@ async function run() {
   try {
     const productsCollection = client.db("CarPlayground").collection("products");
 
-
-    app.get('/products', async(req,res)=>{
-      const productSize = parseInt(req.query.productSize)
-      const pageSize = parseInt(req.query.pageSize)
-      const size = parseInt(req.query.size)
-      let result = []
-      if(size){
-      result = await productsCollection.find().sort({ _id: -1 }).limit(size).toArray()
-      }
-      else{
-       result = await productsCollection.find({}).skip(pageSize*productSize).limit(productSize).toArray()
-      }
-      
-      const count = await productsCollection.count()
-      res.send({
-          count:count,
-          status:true,
-          data:result
-      })
-    })
-    app.get('/audi', async(req,res)=>{
-      const result = await productsCollection.find({brand: 'Audi'}).toArray()
-      res.send({
-        status:true,
-        data:result
-    })
-    })
+    console.log(productsCollection);
   } finally {
     
   }

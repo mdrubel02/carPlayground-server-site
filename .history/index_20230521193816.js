@@ -98,10 +98,10 @@ async function run() {
       })
     })
     // update product
-    app.patch('/updateProduct/:id', async (req, res) => {
+    app.patch('/updateProduct/:id', jwtVerify, async (req, res) => {
       const id = req.params.id
       const product = req.body
-      console.log(product);
+
       const filter = { _id: new ObjectId(id) }
       const updateReview = {
         $set: product

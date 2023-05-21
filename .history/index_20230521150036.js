@@ -53,18 +53,7 @@ async function run() {
       const result = await productsCollection.insertOne(service)
       res.send(result)
     })
-    //Get the my toys product
-    app.get("/myToys",async(req,res)=>{
-      const emailAdd= req.query.email 
-      console.log(emailAdd);
-      const query={email:emailAdd}
-      const result = await productsCollection.find(query).toArray()
-      res.send({
-          status:true,
-          data:result
-      })
-  })
-    // get the audi product
+     // get the audi product
     app.get('/audi', async (req, res) => {
       const result = await productsCollection.find({ brand: 'Audi' }).toArray()
       res.send({

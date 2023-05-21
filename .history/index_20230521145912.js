@@ -53,18 +53,6 @@ async function run() {
       const result = await productsCollection.insertOne(service)
       res.send(result)
     })
-    //Get the my toys product
-    app.get("/myToys",async(req,res)=>{
-      const emailAdd= req.query.email 
-      console.log(emailAdd);
-      const query={email:emailAdd}
-      const result = await productsCollection.find(query).toArray()
-      res.send({
-          status:true,
-          data:result
-      })
-  })
-    // get the audi product
     app.get('/audi', async (req, res) => {
       const result = await productsCollection.find({ brand: 'Audi' }).toArray()
       res.send({
@@ -72,7 +60,6 @@ async function run() {
         data: result
       })
     })
-    // get the toyota product
     app.get('/toyota', async (req, res) => {
       const result = await productsCollection.find({ brand: 'Toyota' }).toArray()
       res.send({
@@ -80,7 +67,6 @@ async function run() {
         data: result
       })
     })
-    // get the ford product
     app.get('/ford', async (req, res) => {
       const result = await productsCollection.find({ brand: 'Ford' }).toArray()
       res.send({
@@ -88,7 +74,6 @@ async function run() {
         data: result
       })
     })
-    // get the single details  product
     app.get("/details/:id", async (req, res) => {
       const id = req.params.id
       console.log(id);

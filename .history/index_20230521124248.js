@@ -71,7 +71,7 @@ async function run() {
     app.get("/details/:id",async(req,res)=>{
       const id = req.params.id 
       console.log(id);
-      const result = await productsCollection.findOne({_id:new ObjectId(id)})
+      const result = await productsCollection.findOne({_id:ObjectId(id)})
       res.send({
        status:true,
        data:result
